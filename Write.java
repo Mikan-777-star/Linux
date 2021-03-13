@@ -10,7 +10,7 @@ public class Write{
             Writer w = new BufferedWriter(new FileWriter(System.console().readLine()))) {
             System.out.println("中身を書いていってね(exitで終了)");
             String str;
-            while("exit".equals(str = br.readLine())){
+            while(!"exit".equals(str = br.readLine())){
                 w.write(str);
                 w.write('\n');
             }
