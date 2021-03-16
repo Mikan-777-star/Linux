@@ -7,7 +7,9 @@ const server = http.createServer((req, res) =>{
         'Content-Type': 'text/plain; charset=utf-8'
     });
     const rl = require('readline').createInterface({input: require('fs').createReadStream('Test1.txt'),output:{}});
-    rl.on('line', line => res.write(line));
+    let s = ''
+    rl.on('line', line => s += line + '\n');
+    res.write(s);
     res.end();
 });
 server.listen(8000, () => {
