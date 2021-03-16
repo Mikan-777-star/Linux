@@ -1,13 +1,13 @@
 'use strict';
 
 const http = require('http');
-const rl = require('readline').createInterface({input: require('fs').createReadStream('Test1.txt'),output:{}});
+const rl = require('readline').createInterface({input: require('fs').createReadStream('./Test1.txt'),output:{}});
 var s = "";
 rl.on('line', line => s += line + "\n")
-//  .on('close',() => console.log(s));
+  .on('close',() => console.log(s));
 const server = http.createServer((req, res) =>{
     console.log(new Date());
-    console.log(req);
+//    console.log(req);
     res.writeHead(200, {
         'Content-Type': 'text/html; charset=utf-8'
     });
