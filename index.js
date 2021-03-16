@@ -6,7 +6,7 @@ var s = "";
 rl.on('line', line => s += line + "<br>")
   .on('close',() => console.log(s));
 const server = http.createServer((req, res) =>{
-    console.log(new Date());
+    console.log(new Date() + 'Req by' + req.connection.remoteAddress);
 //    console.log(req);
     res.writeHead(200, {
         'Content-Type': 'text/html; charset=utf-8'
