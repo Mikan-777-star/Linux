@@ -1,10 +1,6 @@
 'use strict';
 
 const http = require('http');
-const rl = require('readline').createInterface({input: require('fs').createReadStream('./Test1.txt'),output:{}});
-var s = "";
-rl.on('line', line => s += line + "<br>")
-  .on('close',() => console.log(s));
 const server = http.createServer((req, res) =>{
     console.log(new Date() + 'Req by' + req.connection.remoteAddress);
     res.writeHead(200, {
@@ -13,14 +9,21 @@ const server = http.createServer((req, res) =>{
 //    console.log(req);
     switch(req.method){
         case 'GET' : {
-            res.write('<h3>' + s + '</h3>');
+            rs = require('fs').createReadStream('./Test1.html');
+            rs.pipe(res);
         }
         break;
         case 'POST' : {
             let data = '';
             req
             .on('data', get => data += get)
-            .on('end', () => console.log('[' + new Date() + '] Data posted: ' + get));
+            .on('end', () => {
+                const decoded = decodeURIComponent(data);
+                console.info('[' + new Date() + '] 投稿: ' + decoded);
+                res.write('<!DOCTYPE html><html lang="ja"><body><h1>' +
+                decoded + 'が投稿されました</h1></body></html>');
+            });
+            
         }
         break;
         default:{}
