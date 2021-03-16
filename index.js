@@ -9,7 +9,7 @@ const server = http.createServer((req, res) =>{
 //    console.log(req);
     switch(req.method){
         case 'GET' : {
-            rs = require('fs').createReadStream('./Test1.html');
+            let rs = require('fs').createReadStream('./Test1.html');
             rs.pipe(res);
         }
         break;
