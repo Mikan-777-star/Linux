@@ -9,8 +9,10 @@ const server = http.createServer((req, res) =>{
 //    console.log(req);
     switch(req.method){
         case 'GET' : {
-            let rs = require('fs').createReadStream('./Test1.html');
-            rs.pipe(res);
+            let rs = require('readline').createInterface({input:require('fs').createReadStream('./Test1.html'), output : null});
+            let str = '';
+            rs.on('line', line => str += line)
+              .on('close', () => res.write(str));
         }
         break;
         case 'POST' : {
