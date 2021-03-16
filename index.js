@@ -7,7 +7,7 @@ const server = http.createServer((req, res) =>{
     res.writeHead(200, {
         'Content-Type': 'text/html; charset=utf-8'
     });
-    const rl = require('readline').createInterface({input: require('fs').createReadStream('Test1.txt'),output:{}});
+    const rl = require('readline').createInterface({input: require('fs').createReadStream('./Test1.txt'),output:{}});
     let s = '<h1>'
     rl.on('line', line => s += line + '<br>');
     res.write(s + '</h1>');
