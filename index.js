@@ -3,7 +3,7 @@
 const http = require('http');
 const rl = require('readline').createInterface({input: require('fs').createReadStream('./Test1.txt'),output:{}});
 var s = "";
-rl.on('line', line => s += line + "\n")
+rl.on('line', line => s += line + "<br>")
   .on('close',() => console.log(s));
 const server = http.createServer((req, res) =>{
     console.log(new Date());
@@ -11,7 +11,7 @@ const server = http.createServer((req, res) =>{
     res.writeHead(200, {
         'Content-Type': 'text/html; charset=utf-8'
     });
-    res.write('<h1>' + s + '</h1>');
+    res.write('<h3>' + s + '</h3>');
     res.end();
 });
 server.listen(8000, () => {
