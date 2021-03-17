@@ -19,7 +19,7 @@ const server = http.createServer((req, res) =>{
             .on('end', () => {
                 const decoded = decodeURIComponent(data);
                 console.info('[' + new Date() + '] 投稿: ' + decoded);
-                res.write('<!DOCTYPE html><html lang="ja"><body><h1>' + decoded + 'が投稿されました</h1></body></html>');
+                res.write('<!DOCTYPE html><html lang="ja"><body><h1>' + decoded + 'が投稿されました</h1></body></html>', e => console.error("なんかのエラー" + e));
             });
         }
         break;
