@@ -21,14 +21,15 @@ const server = http.createServer((req, res) =>{
                 console.info('[' + new Date() + '] 投稿: ' + decoded);
                 res.write('<!DOCTYPE html><html lang="ja"><body><h1>' + decoded + 'が投稿されました</h1></body></html>', e => console.error("なんかのエラー" + e));
             });
+            res.end();
         }
         break;
         default:{res.write("<h1>ミカンママのおっぱい！<br>えっち！！</h1>")}
         break;
     }
-    res.end();
 })
-.on('error', e =>console.error(new Date() + " Server error " , e));
+.on('error', e =>console.error(new Date() + " Server error " , e))
+.on('clientError', e => console.error('[' + new Date() + '] Client Error', e));
 server.listen(8000, () => {
     console.log("server on");
 })
