@@ -5,7 +5,7 @@ const server = http.createServer((req, res) => {
 });
 const port = 8000;
 server.listen(port, () => {
-  const now = new Date();
+  const now = Date.now();
   res.setHeader('Set-Cookie', 'last_access = '+ now + ';');
   console.info('Listening on ' + port);
 });
