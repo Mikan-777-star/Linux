@@ -1,5 +1,6 @@
 'use strict';
-
+var s = "";
+rl.on('line', line => s += line + "\n");
 const http = require('http');
 const server = http.createServer((req, res) =>{
     console.log(new Date() + 'Req by' + req.connection.remoteAddress);
@@ -10,9 +11,7 @@ const server = http.createServer((req, res) =>{
     switch(req.method){
         case 'GET' : {
             const rl = require('readline').createInterface({input: require('fs').createReadStream('./Test1.html'),output:{}});
-            var s = "";
-            rl.on('line', line => s += line + "\n")
-              .on('close',() => res.write(s));
+            res.write(s);
         }
         break;
         case 'POST' : {
