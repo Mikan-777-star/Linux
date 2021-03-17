@@ -10,25 +10,20 @@ const server = http.createServer((req, res) =>{
     });
 //    console.log(req);
     switch(req.method){
-        case 'GET' : {
-            
-            res.write(s);
-        }
+        case 'GET' : res.write(s);
         break;
         case 'POST' : {
             let data = '';
             req
-            .on('data', get => data += get)
+            .on('data', get => data = get + data)
             .on('end', () => {
                 const decoded = decodeURIComponent(data);
                 console.info('[' + new Date() + '] 投稿: ' + decoded);
-                res.write('<!DOCTYPE html><html lang="ja"><body><h1>' +
-                decoded + 'が投稿されました</h1></body></html>');
+                res.write('<!DOCTYPE html><html lang="ja"><body><h1>' + decoded + 'が投稿されました</h1></body></html>');
             });
-            
         }
         break;
-        default:{}
+        default:{res.write("<h1>ミカンママのおっぱい！<br>えっち！！</h1>")}
         break;
     }
     res.end();
