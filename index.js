@@ -1,5 +1,6 @@
 'use strict';
 var s = "";
+const rl = require('readline').createInterface({input: require('fs').createReadStream('./Test1.html'),output:{}});
 rl.on('line', line => s += line + "\n");
 const http = require('http');
 const server = http.createServer((req, res) =>{
@@ -10,7 +11,7 @@ const server = http.createServer((req, res) =>{
 //    console.log(req);
     switch(req.method){
         case 'GET' : {
-            const rl = require('readline').createInterface({input: require('fs').createReadStream('./Test1.html'),output:{}});
+            
             res.write(s);
         }
         break;
