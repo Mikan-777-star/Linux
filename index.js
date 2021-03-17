@@ -9,10 +9,10 @@ const server = http.createServer((req, res) =>{
 //    console.log(req);
     switch(req.method){
         case 'GET' : {
-            let rs = require('readline').createInterface({input:require('fs').createReadStream('./Test1.html'), output : null});
-            let str = '';
-            rs.on('line', line => str += line)
-              .on('close', () => res.write(str));
+            const rl = require('readline').createInterface({input: require('fs').createReadStream('./Test1.html'),output:{}});
+            var s = "";
+            rl.on('line', line => s += line + "\n")
+              .on('close',() => res.write(s));
         }
         break;
         case 'POST' : {
