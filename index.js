@@ -11,7 +11,7 @@ const server = http
     switch (req.method) {
       case 'GET':
         const fs = require('fs');
-        const rs = fs.createReadStream('./form.html');
+        const rs = fs.createReadStream('./Test1.html');
         rs.pipe(res);
         break;
       case 'POST':
