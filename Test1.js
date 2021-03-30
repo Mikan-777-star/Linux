@@ -19,10 +19,12 @@ var Audios = /** @class */ (function () {
     Audios.prototype.loop = function () {
         var bool = !this.params.loop;
         this.params.loop = bool;
-        if(bool){
-            document.getElementById('loop').innerHTML = "loop on";
-        }else{
-            document.getElementById('loop').innerHTML = "loop off";
+        if(document.getElementById("loop") !== null){
+            if(bool){
+                document.getElementById('loop').innerHTML = "loop on";
+            }else{
+                document.getElementById('loop').innerHTML = "loop off";
+            }
         }
     };
     return Audios;
