@@ -8,17 +8,34 @@
 </head>
 <body>
     <script>
-        var audio = new Audio();
-        audio.src = "Yoimachi.mp3"
+        var audio =　null;
+        function syokika(){
+            if(audio != null){
+                stop();
+            }
+            audio = new Audio();
+            audio.src = "Yoimachi.mp3"
+            audio.volume = 0.5
+        }
+        syokika();
         function run(){
             audio.play();
         }
         function stop(){
             audio.pause();
         }
+        function up(){
+            audio.volume += 0.1;
+        }
+        function down(){
+            audio.volume -= 0.1;
+        }
     </script>
-    <a href="javascript:void(0)" onclick="run()">再生</a>
-    <a href="javascript:void(0)" onclick="stop()">一時停止</a>
+    <a href="javascript:void(0)" onclick="run()">再生</a><br>
+    <a href="javascript:void(0)" onclick="stop()">一時停止</a><br>
+    <a href="javascript:void(0)" onclick="up()">音量を上げる</a><br>
+    <a href="javascript:void(0)" onclick="down()">音量を下げる</a><br>
+    <a href="javascript:void(0)" onclick="syokika()">停止</a>
     <p><br>さっそうと勝負して やっちゃうけど負けちゃって
        <br> ふがいないないね傷心転身
        <br> 
